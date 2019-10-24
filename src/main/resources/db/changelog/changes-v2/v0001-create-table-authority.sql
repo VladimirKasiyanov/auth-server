@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS auth.authority;
+CREATE TABLE auth.authority(
+    id   BIGSERIAL PRIMARY KEY,
+    name CHARACTER VARYING(255) UNIQUE
+)
