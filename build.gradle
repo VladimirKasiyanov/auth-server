@@ -1,0 +1,67 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+tasks.withType(JavaCompile) {
+    def javaVersion = JavaVersion.VERSION_11.toString()
+    setSourceCompatibility javaVersion
+    setTargetCompatibility javaVersion
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.6.RELEASE'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.hibernate:hibernate-core'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    compileOnly 'org.liquibase:liquibase-core'
+
+
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.9.RELEASE'
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'1.5.9.RELEASE'
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version:'1.5.9.RELEASE'
+//    compile group: 'org.springframework', name: 'spring-context-support', version:'5.0.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context-support'
+    compile group: 'org.springframework.hateoas', name: 'spring-hateoas'/*, version:'0.24.0.RELEASE'*/
+//    compile group: 'com.h2database', name: 'h2', version:'1.4.196'
+//    compile group: 'org.postgresql', name: 'postgresql', version:'42.1.4'
+//    compile group: 'org.hibernate', name: 'hibernate-jpamodelgen', version:'5.2.12.Final'
+//    compile group: 'org.flywaydb', name: 'flyway-core', version:'5.0.5'
+//    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.9.5'
+//    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-hibernate5', version:'2.9.5'
+//    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version:'2.2.1.RELEASE'
+//    compile group: 'org.projectlombok', name: 'lombok', version:'1.16.20'
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+    }
+}
